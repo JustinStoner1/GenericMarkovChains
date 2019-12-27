@@ -19,4 +19,20 @@ public class FileToData
 
         return data;
     }
+
+    public static ArrayList<ArrayList<Character>> CharsToData(File file) throws IOException
+    {
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        ArrayList<ArrayList<Character>> data = new ArrayList<>();
+        while (bufferedReader.ready())
+        {
+            Character[] newLine = bufferedReader.readLine().chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+            data.add(new ArrayList<Character>(Arrays.asList(newLine)));
+            //System.out.println(newLine);
+        }
+
+        return data;
+    }
 }
